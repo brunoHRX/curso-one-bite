@@ -11,3 +11,7 @@ Review some codes and usefel insight for HTML stuff like forms, tables and seman
 Day 2 =
 
 Finished the review and completed the exercise of making a full website with just HTML 5.
+
+Day 3 =
+
+Finished the review of CSS Shenanigans. Stylizd two different html files, in a very ugly way.

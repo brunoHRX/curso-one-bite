@@ -1,0 +1,25 @@
+:root {
+  --background-post: #fffafa ;
+  --data-color: #008080;
+}
+
+html{
+  margin: 0 8rem 0 8rem;
+}
+body .post{
+  background-color: var(--background-post);
+  padding: 2rem;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.date {
+  font-family: 'Roboto', sans-serif;
+  color: var(--data-color);
+}
+
+.post-content {
+  font-family: 'Open Sans', sans-serif;
+}
