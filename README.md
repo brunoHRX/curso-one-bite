@@ -23,3 +23,7 @@ I finished the first two JS exercises, one was to write a program that received 
 Day 5 =
 
 Finished some exercises of JavaScript, leaned something like cases, switch and while. Nicest thing about them is While (something is true or not) { Do this, motherfish}
+
+Day 6 =
+
+Make another things with loop conditionals and stuff, stucked on palindrome exercise and started a acc on Code Wars for mor time of solving problems.
