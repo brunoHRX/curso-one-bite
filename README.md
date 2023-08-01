@@ -27,3 +27,7 @@ Finished some exercises of JavaScript, leaned something like cases, switch and w
 Day 6 =
 
 Make another things with loop conditionals and stuff, stucked on palindrome exercise and started a acc on Code Wars for mor time of solving problems.
+
+Day 6 =
+
+Another day, antoher array of studies. I made two programs, one that simulates a queue with the option to add patients and consult them, and another that allows you to manipulate a deck of cards.
