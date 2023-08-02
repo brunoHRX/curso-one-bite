@@ -32,6 +32,6 @@ Day 7 =
 
 Another day, antoher array of studies. I made two programs, one that simulates a queue with the option to add patients and consult them, and another that allows you to manipulate a deck of cards.
 
-Day 7 =
+Day 8 =
 
 Day of Arrays, Objects and properties. Make some Quiz e read some stuffs.
