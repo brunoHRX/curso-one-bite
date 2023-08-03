@@ -35,3 +35,7 @@ Another day, antoher array of studies. I made two programs, one that simulates a
 Day 8 =
 
 Day of Arrays, Objects and properties. Make some Quiz e read some stuffs.
+
+Day 9 =
+
+I have make a program for indexing of properties, took me a full day to figure out how to make it.
