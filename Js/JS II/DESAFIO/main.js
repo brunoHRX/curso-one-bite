@@ -48,33 +48,23 @@ let vagas = [
   }
 ]
 
-let lista = ''
-
-function menu() {
-  return prompt(
-    'SISTEMA DE VAGAS DE EMPPREGO\n' +
-      'Escolha uma Opção\n' +
-      '1. Listar vagas disponíveis\n' +
-      '2. Criar uma nova vaga\n' +
-      '3. Visualizar uma vaga\n' +
-      '4. Inscrever um candidato\n' +
-      '5. Excluir uma vaga\n' +
-      '6. Sair\n'
-  )
+function gerarLista() {
+  let lista = ''
+  vagas.forEach(function (vaga) {
+    lista +=
+      vagas.indexOf(vaga) +
+      1 +
+      ' º ' +
+      vaga.nome +
+      ' com ' +
+      vaga.candidatosInscritos +
+      ' candidatos inscritos\n'
+  })
+  return lista
 }
 
-vagas.forEach(function (vaga) {
-  lista +=
-    vagas.indexOf(vaga) +
-    1 +
-    ' º ' +
-    vaga.nome +
-    ' com ' +
-    vaga.candidatosInscritos +
-    ' candidatos inscritos\n'
-})
-
 function listarVagas() {
+  const lista = gerarLista()
   alert('Segue a Lista de Vagas\n' + lista + '\n')
 }
 
@@ -86,34 +76,37 @@ function criarVaga() {
   novaVaga.candidatosInscritos = 0
   novaVaga.nomeCandidatos = []
 
-  choiceVaga = prompt(
-    'Confirme as informações da vaga\n' +
-      'Nome da Vaga: ' +
-      novaVaga.nome +
-      '\n' +
-      'Descrição: ' +
-      novaVaga.descricao +
-      '\n' +
-      'Data Limite: ' +
-      novaVaga.dataLimite +
-      '\n' +
-      'Os dados estão corretos\n a) Sim\n b)Não\n'
-  )
+  do {
+    choiceVaga = prompt(
+      'Confirme as informações da vaga\n' +
+        'Nome da Vaga: ' +
+        novaVaga.nome +
+        '\n' +
+        'Descrição: ' +
+        novaVaga.descricao +
+        '\n' +
+        'Data Limite: ' +
+        novaVaga.dataLimite +
+        '\n' +
+        'Os dados estão corretos\n a) Sim\n b) Não\n'
+    )
 
-  switch (choiceVaga) {
-    case 'a':
-      vagas.push(novaVaga)
-      alert('Vaga criada com Sucesso!')
-      novaVaga = []
-      break
-    case 'b':
-      criarVaga()
-      break
-  }
+    switch (choiceVaga) {
+      case 'a':
+        vagas.push(novaVaga)
+        alert('Vaga criada com Sucesso!')
+        novaVaga = []
+        break
+      case 'b':
+        alert('Informe novamente os dados da VAGA')
+        break
+    }
+  } while (choiceVaga === 'b')
 }
 
 function visualizarVaga() {
-  let indexVaga = prompt('Qual vaga deseja visualizar?\n' + lista)
+  const lista = gerarLista()
+  const indexVaga = prompt('Qual vaga deseja visualizar?\n' + lista)
   alert(
     indexVaga +
       ' º vaga ' +
@@ -136,38 +129,127 @@ function visualizarVaga() {
 }
 1
 function inscreverCandidato() {
-  let nomeCandidadto = prompt('Qual o nome do candidato a ser inscrito?')
-  let indexVaga = prompt(
-    'Qual o indice da vaga para qual você deseja inscreve-lo'
-  )
-  let confirmacao = prompt(
-    indexVaga +
-      ' º vaga ' +
-      '\n' +
-      vagas[indexVaga - 1].nome +
-      '\n' +
-      'Descrição: ' +
-      vagas[indexVaga - 1].descricao +
-      '\n' +
-      'Data Limite: ' +
-      vagas[indexVaga - 1].dataLimite +
-      '\n' +
-      'Nº de Candidatos inscritos ' +
-      vagas[indexVaga - 1].candidatosInscritos +
-      '\n' +
-      'Relação dos Candidatos: ' +
-      vagas[indexVaga - 1].nomeCandidatos +
-      '\n' +
-      'Essa é a vaga que você deseja inscrever ?\n a) Sim\n b) Nao\n'
-  )
+  const nomeCandidadto = prompt('Qual o nome do candidato a ser inscrito?')
 
-  if (confirmacao === 'Sim') {
-    vagas[indexVaga - 1].candidatosInscritos++
-    vagas[indexVaga - 1].nomeCandidatos.shift(nomeCandidadto)
-  }
+  do {
+    const lista = gerarLista()
+    const indexVaga = prompt(
+      'Qual o indice da vaga para qual você deseja inscreve-lo\n' + lista
+    )
+
+    confirmacao = prompt(
+      indexVaga +
+        ' º vaga ' +
+        '\n' +
+        vagas[indexVaga - 1].nome +
+        '\n' +
+        'Descrição: ' +
+        vagas[indexVaga - 1].descricao +
+        '\n' +
+        'Data Limite: ' +
+        vagas[indexVaga - 1].dataLimite +
+        '\n' +
+        'Nº de Candidatos inscritos ' +
+        vagas[indexVaga - 1].candidatosInscritos +
+        '\n' +
+        'Relação dos Candidatos: ' +
+        vagas[indexVaga - 1].nomeCandidatos +
+        '\n' +
+        'Essa é a vaga que você deseja inscrever ?\n a) Sim\n b) Nao\n'
+    )
+
+    switch (confirmacao) {
+      case 'a':
+        vagas[indexVaga - 1].candidatosInscritos++
+        vagas[indexVaga - 1].nomeCandidatos.push(nomeCandidadto)
+        break
+      default:
+        break
+    }
+  } while (confirmacao !== 'a')
 }
 
-function excluirVaga() {}
+function excluirVaga() {
+  do {
+    const lista = gerarLista()
+    const indexVaga = prompt(
+      'Qual o indice da vaga que você deseja Excluir?\n' + lista
+    )
+    const confirmacao = prompt(
+      indexVaga +
+        ' º vaga ' +
+        '\n' +
+        vagas[indexVaga - 1].nome +
+        '\n' +
+        'Descrição: ' +
+        vagas[indexVaga - 1].descricao +
+        '\n' +
+        'Data Limite: ' +
+        vagas[indexVaga - 1].dataLimite +
+        '\n' +
+        'Nº de Candidatos inscritos ' +
+        vagas[indexVaga - 1].candidatosInscritos +
+        '\n' +
+        'Relação dos Candidatos: ' +
+        vagas[indexVaga - 1].nomeCandidatos +
+        '\n' +
+        'Essa é a vaga que você deseja inscrever ?\n a) Sim\n b) Nao\n'
+    )
 
-console.log(lista)
-console.log(vagas)
+    switch (confirmacao) {
+      case 'a':
+        vagas.splice(indexVaga - 1, 1)
+        break
+      default:
+        break
+    }
+  } while (confirmacao === 'b')
+}
+
+function menu() {
+  return prompt(
+    'SISTEMA DE VAGAS DE EMPPREGO\n' +
+      'Escolha uma Opção\n' +
+      '1. Listar vagas disponíveis\n' +
+      '2. Criar uma nova vaga\n' +
+      '3. Visualizar uma vaga\n' +
+      '4. Inscrever um candidato\n' +
+      '5. Excluir uma vaga\n' +
+      '6. Sair\n'
+  )
+}
+
+function executar() {
+  let opcao = ''
+
+  do {
+    opcao = menu()
+    let choice
+
+    switch (opcao) {
+      case '1':
+        choice = listarVagas()
+        break
+      case '2':
+        choice = criarVaga()
+        break
+      case '3':
+        choice = visualizarVaga()
+        break
+      case '4':
+        choice = inscreverCandidato()
+        break
+      case '5':
+        choice = excluirVaga()
+        break
+      case '6':
+        alert('Saindo...')
+        break
+      default:
+        alert('Opção Invalida!')
+        break
+    }
+  } while (opcao !== '6')
+}
+
+executar()
